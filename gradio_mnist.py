@@ -25,9 +25,6 @@ def reshape_for_cnn(image):
 def recognise_image(image):
     image = reshape_for_cnn(image)
     prediction = mnist_cnn.predict(image)
-    print(prediction)
-    print({str(i): str(prediction[0][i]) for i in range(10)})
-    print({str(i): prediction[0][i] for i in range(10)})
     return {str(i): float(prediction[0][i]) for i in range(len(prediction[0]))}
 
 output_component = gr.outputs.Label(num_top_classes=3) # need to adjust this...
